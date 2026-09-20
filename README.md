@@ -1,45 +1,43 @@
-# YOLO Computer Vision: Object Detection & Segmentation
+# Vehicle Detection & Tracking
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
 ![YOLO](https://img.shields.io/badge/YOLO-Ultralytics-purple)
 ![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)
 
-A practical **Computer Vision project using Ultralytics YOLO, OpenCV, and Streamlit** for object detection, camera-based image inference, and YOLO segmentation workflows.
+A practical computer vision project using **Ultralytics YOLO, OpenCV, and Streamlit** for object detection, camera-based inference, and segmentation workflows.
 
 ## Project Overview
 
-This project demonstrates an end-to-end computer vision workflow:
+This project focuses on YOLO-based visual object detection with a workflow that can be extended to vehicle-focused analytics and tracking applications.
 
-- Load images from an input directory
-- Run YOLO object detection
-- Generate annotated images with bounding boxes and labels
-- Use a browser camera through a Streamlit application
-- Display detected object names and counts
-- Provide a separate YOLO segmentation training workflow
+Current implementation includes:
 
-The object detection workflow has been tested locally with sample images, including detections of people, cars, dogs, and cows.
+- YOLO object detection on images
+- Annotated output with bounding boxes, labels, and confidence scores
+- Browser camera snapshot detection through Streamlit
+- Image upload and object counting
+- YOLO segmentation workflow
+
+> **Implementation note:** the current code performs object detection and camera snapshot inference. Persistent multi-object tracking across video frames is not yet implemented.
 
 ## Features
 
-### 1. YOLO Object Detection
+### YOLO Object Detection
 - Supports `.jpg`, `.jpeg`, and `.png` images
 - Processes multiple images from `images_input/`
 - Generates bounding boxes and class labels
 - Saves annotated results to `images_output/`
 
-### 2. Streamlit Camera Detection App
-- Opens a local web application in the browser
-- Uses the browser camera to capture an image
+### Streamlit Camera Application
+- Opens a local browser-based application
+- Captures an image from the browser camera
 - Runs YOLO inference on the captured image
-- Displays bounding boxes and detected classes
-- Shows object counts
+- Displays detected classes, bounding boxes, and object counts
 - Includes an adjustable confidence threshold
-- Also supports image upload
+- Supports image upload
 
-> **Note:** The current Streamlit app performs camera snapshot detection rather than continuous video detection.
-
-### 3. YOLO Segmentation
+### YOLO Segmentation
 - Includes `object_segmentation.py`
 - Uses the YOLO segmentation framework
 - Supports a user-provided YOLO `data.yaml` dataset configuration
@@ -69,7 +67,7 @@ flowchart LR
 ## Project Structure
 
 ```text
-computer-vision-yolo/
+Vehicle-Detection-Tracking/
 │
 ├── images_input/
 │   ├── image2.jpg
@@ -88,28 +86,15 @@ Generated folders such as `runs/`, `images_output/`, Python virtual environments
 
 ## Installation
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/kumarakshay7/computer-vision-yolo.git
 cd computer-vision-yolo
-```
-
-Install the dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
 ## Run Object Detection
 
-Place test images inside:
-
-```text
-images_input/
-```
-
-Run:
+Place test images inside `images_input/` and run:
 
 ```bash
 python object_detection.py
@@ -117,33 +102,15 @@ python object_detection.py
 
 The script creates `images_output/` and saves annotated images there.
 
-## Run the Streamlit Camera App
-
-Start the application with:
+## Run the Streamlit App
 
 ```bash
 python -m streamlit run app.py
 ```
 
-Streamlit will open the application in your local browser, normally at:
-
-```text
-http://localhost:8501
-```
-
-Then:
-
-1. Click **Open Camera**.
-2. Allow camera access in the browser.
-3. Capture an image containing an object.
-4. YOLO analyzes the captured image.
-5. The app displays bounding boxes, detected object classes, and object counts.
-
-You can also upload a `.jpg`, `.jpeg`, or `.png` image instead of using the camera.
+Open the local Streamlit page, allow camera access, and capture an image for YOLO detection. You can also upload an image directly.
 
 ## Example Detection Results
-
-The current local test run produced the following detections:
 
 | Image | Detected Objects |
 |---|---|
@@ -152,65 +119,9 @@ The current local test run produced the following detections:
 | `image8.jpg` | 1 dog |
 | `img1.jpg` | 1 dog |
 
-## Segmentation
+## Future Tracking Extension
 
-The segmentation workflow is contained in:
-
-```text
-object_segmentation.py
-```
-
-Prepare a YOLO-compatible dataset:
-
-```text
-dataset/
-├── images/
-│   ├── train/
-│   └── val/
-├── labels/
-│   ├── train/
-│   └── val/
-└── data.yaml
-```
-
-Example `data.yaml`:
-
-```yaml
-path: /path/to/dataset
-train: images/train
-val: images/val
-
-names:
-  0: class_name
-```
-
-Update `DATA_YAML` in `object_segmentation.py` and run:
-
-```bash
-python object_segmentation.py
-```
-
-Do not use the placeholder `path_to_your_data.yaml` as an actual dataset path.
-
-## Applications
-
-- Object monitoring
-- Image analytics
-- Automated inspection
-- Retail and inventory analysis
-- Traffic and vehicle detection
-- Industrial computer vision
-- Interactive computer vision demos
-
-## Future Improvements
-
-- Add continuous webcam/video detection
-- Add confidence and class filters
-- Add custom YOLO training datasets
-- Add segmentation result examples
-- Add precision, recall, mAP, and inference-time reporting
-- Add Streamlit deployment
-- Add automated deployment
+The repository title is **Vehicle Detection & Tracking**, while the current implementation provides the detection foundation. A future tracking module can add persistent object IDs and frame-to-frame tracking for video streams.
 
 ## Author
 
