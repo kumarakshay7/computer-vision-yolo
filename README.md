@@ -6,7 +6,7 @@ A Python-based computer vision project using **Ultralytics YOLO** and **OpenCV**
 
 This project demonstrates a practical computer vision pipeline that reads images from an input folder, runs YOLO inference, and saves annotated results to an output folder.
 
-The current object detection workflow has been tested locally and successfully processed sample images, detecting classes such as people, cars, dogs, and cows.
+The object detection workflow has been tested locally and successfully processed sample images, detecting classes such as people, cars, dogs, and cows.
 
 ## Features
 
@@ -15,12 +15,12 @@ The current object detection workflow has been tested locally and successfully p
 - Runs YOLO inference on each image
 - Draws detected bounding boxes and labels
 - Saves annotated images to `images_output/`
-- Prints processing and inference information in the terminal
+- Prints processing information in the terminal
 
 ### Image Segmentation
-- Includes a YOLO segmentation workflow in `object_Segmentation.py`
+- Includes a YOLO segmentation training workflow in `object_segmentation.py`
 - Uses the Ultralytics YOLO segmentation framework
-- Can be extended for custom segmentation datasets and model training
+- Accepts a user-supplied YOLO dataset YAML file
 
 > **Current status:** Object detection is working with the included script. Custom segmentation training requires a valid YOLO dataset configuration file such as `data.yaml`.
 
@@ -42,8 +42,8 @@ computer-vision-yolo/
 │   ├── image3.jpg
 │   └── ...
 │
-├── object_detection_.py
-├── object_Segmentation.py
+├── object_detection.py
+├── object_segmentation.py
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -87,7 +87,7 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-For a cleaner setup, it is recommended to use a Python virtual environment.
+For a cleaner setup, use a Python virtual environment.
 
 ## Run Object Detection
 
@@ -100,18 +100,14 @@ images_input/
 Then run:
 
 ```bash
-python object_detection_.py
+python object_detection.py
 ```
 
-The script processes supported images and writes the annotated results to:
-
-```text
-images_output/
-```
+The script creates `images_output/` when needed and saves annotated images there.
 
 ## Example Detection Results
 
-The current test run successfully processed multiple images. Example detections included:
+The current test run successfully processed multiple images:
 
 | Image | Detected Objects |
 |---|---|
@@ -124,13 +120,13 @@ These results demonstrate the end-to-end inference workflow from image input to 
 
 ## Segmentation
 
-The repository also contains:
+The repository includes:
 
 ```text
-object_Segmentation.py
+object_segmentation.py
 ```
 
-For custom segmentation model training, prepare a YOLO-compatible dataset with a configuration file similar to:
+For custom segmentation training, prepare a YOLO-compatible dataset with a configuration file similar to:
 
 ```yaml
 path: /path/to/dataset
@@ -141,28 +137,33 @@ names:
   0: class_name
 ```
 
-Then configure the segmentation script with the actual dataset path rather than a placeholder such as `path_to_your_data.yaml`.
+Then update `DATA_YAML` in `object_segmentation.py` and run:
+
+```bash
+python object_segmentation.py
+```
+
+Do not use the placeholder `path_to_your_data.yaml` as an actual dataset path.
 
 ## Applications
 
-This type of computer vision pipeline can be adapted for:
+This computer vision workflow can be adapted for:
 
 - Object monitoring
 - Image analytics
 - Automated inspection
 - Retail and inventory analysis
 - Traffic and vehicle detection
-- Smart surveillance
 - Industrial computer vision
 
 ## Future Improvements
 
-- Add a web interface using Streamlit
+- Add a Streamlit web interface
 - Add video and webcam inference
 - Add confidence and class filters
 - Add custom YOLO training datasets
 - Add segmentation result examples
-- Add performance metrics such as precision, recall, mAP, and inference time
+- Add precision, recall, mAP, and inference-time reporting
 - Add automated deployment
 
 ## Author
