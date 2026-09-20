@@ -123,6 +123,16 @@ Open the local Streamlit page, allow camera access, and capture an image for YOL
 
 The repository title is **Vehicle Detection & Tracking**, while the current implementation provides the detection foundation. A future tracking module can add persistent object IDs and frame-to-frame tracking for video streams.
 
+## Portfolio Project 3
+
+This repository is featured as **Project 03: Vehicle Detection & Tracking** in my portfolio.
+
+**View Project 3 on Portfolio:**  
+https://kumarakshay7.github.io/akshay-portfolio/
+
+**View Project 3 GitHub Repository:**  
+https://github.com/kumarakshay7/computer-vision-yolo
+
 ## Author
 
 **Akshay Kumar**
