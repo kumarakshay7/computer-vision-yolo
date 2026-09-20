@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Python virtual environment
+training_env/
+venv/
+.venv/
+env/
+Include/
+Lib/
+Scripts/
+share/
+
+# VS Code
+.vscode/
+
+# YOLO generated files
+runs/
+*.cache
+
+# Generated output
+images_output/
+
+# Large model files
+*.pt
+*.onnx
+*.engine
+
+# OS files
+.DS_Store
+Thumbs.db
+pyvenv.cfg
